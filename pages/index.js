@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Articles from '../components/Articles';
+import { getMovies } from '../service/movieService';
 
 export default function Home({ articles }) {
   return (
@@ -14,18 +15,11 @@ export default function Home({ articles }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch(`http://yuanjin.tech:5100/api/movie`);
-  const articles = await res.json();
-
-  if (!articles) {
-    return {
-      notFound: true,
-    };
-  }
+  const res = await getMovies();
 
   return {
     props: {
-      articles,
+      articles: res.data,
     },
   };
 };

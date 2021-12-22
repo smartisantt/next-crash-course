@@ -5,10 +5,6 @@ import { getMovies } from '../service/movieService';
 export default function Home({ articles }) {
   return (
     <div>
-      <Head>
-        <title>WebDev</title>
-        <meta name='keyword' content='ssr' />
-      </Head>
       <Articles articles={articles} />
     </div>
   );
